@@ -139,11 +139,7 @@ form{
     display: none;
 }
 
-.product-form{
-    width: 20rem;
-    max-width: 90%;
-    margin: auto;
-}
+
 
 .grid{
     display: flex;
@@ -216,17 +212,3 @@ form{
     }
 }
 
-button{
-    font: inherit;
-    border: 1px solid blue;
-    color: brown;
-    background: white;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-button:hover,
-button:active{
-    background-color: purple;
-    color: white;
-}

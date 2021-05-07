@@ -1,4 +1,4 @@
-//const products = []
+
 const fs = require('fs')
 const path = require('path')
 const p = path.join(__dirname, '../data', 'products.json')
@@ -38,7 +38,6 @@ module.exports = class Product {
         getProductsFromFile(products => {  
             const product = products.find(p => p.id === id)
             cb(product)
-           
         })
         
     }
