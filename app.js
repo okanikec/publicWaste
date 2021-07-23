@@ -4,6 +4,7 @@ const express = require('express')
 const socketio = require('socket.io')
 const bodyParser = require('body-parser')
 const errorController = require('./controllers/error')
+const mongoConnect = require('./util/database')
 
 const app = express()
 const server = http.createServer(app)
@@ -39,3 +40,4 @@ server.listen(port, () => {
     console.log(`server is up on port ${port}!`)
 })
 
+mongoConnect()    
