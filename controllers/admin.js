@@ -19,6 +19,7 @@ exports.postAddProduct = (req, res, next) => {
     const description = req.body.description
     const product = new Product(null, title, imageUrl, description, price)
     product.save().then(result => {
+        //console.log(result)
         console.log('Created product')
         res.redirect('/admin/products')
     }).catch(err => {
@@ -50,31 +51,31 @@ exports.postAddProduct = (req, res, next) => {
 // }
 
 
-exports.postEditProduct = (req, res, next) => {
-    const prodId = req.body.productId
-    const updatedTitle = req.body.title
-    const updatedImageUrl = req.body.imageUrl
-    const updatedDesc = req.body.description
-    const updatedPrice = req.body.price
-    const updatedProduct = new Product(prodId, updatedTitle, updatedImageUrl, updatedDesc, updatedPrice )
-    updatedProduct.save()
-}
+// exports.postEditProduct = (req, res, next) => {
+//     const prodId = req.body.productId
+//     const updatedTitle = req.body.title
+//     const updatedImageUrl = req.body.imageUrl
+//     const updatedDesc = req.body.description
+//     const updatedPrice = req.body.price
+//     const updatedProduct = new Product(prodId, updatedTitle, updatedImageUrl, updatedDesc, updatedPrice )
+//     updatedProduct.save()
+// }
 
-exports.getProducts = (req, res, next) => {
-    Product.fetchAll( products => { 
-        res.render('admin/products', {
-            prods: products,
-            pageTitle: 'Admin Products',
-            path: '/admin/products',
-            hasProducts: products.length > 0,
-            activeShop: true,
-            productCSS: true
-        }) 
-    })
-}
+// exports.getProducts = (req, res, next) => {
+//     Product.fetchAll( products => { 
+//         res.render('admin/products', {
+//             prods: products,
+//             pageTitle: 'Admin Products',
+//             path: '/admin/products',
+//             hasProducts: products.length > 0,
+//             activeShop: true,
+//             productCSS: true
+//         }) 
+//     })
+// }
 
-exports.postDeleteProduct = (req, res, next) => {
-    const prodId = req.body.productId
-    Product.deleteById(prodId)
-    res.redirect('/admin/products')
-}
+// exports.postDeleteProduct = (req, res, next) => {
+//     const prodId = req.body.productId
+//     Product.deleteById(prodId)
+//     res.redirect('/admin/products')
+// }

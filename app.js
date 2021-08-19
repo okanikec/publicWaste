@@ -4,8 +4,7 @@ const express = require('express')
 const socketio = require('socket.io')
 const bodyParser = require('body-parser')
 const errorController = require('./controllers/error')
-const mongoConnect = require('./util/database')
-
+const mongoConnect = require('./util/database').mongoConnect
 const app = express()
 const server = http.createServer(app)
 const io = socketio(server)
@@ -19,7 +18,10 @@ const shopRoutes = require('./routes/shop')
 const aboutRoutes = require('./routes/about')
 
 
-app.use(express.static(path.join(__dirname, 'public')))
+//app.use(express.static(path.join(__dirname, 'public')))
+
+
+
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
@@ -29,15 +31,17 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(express.urlencoded({ extended: false }))
 
+app.use(express.static(path.join(__dirname, 'public')))
+
 app.use('/admin', adminRoutes)
 app.use(shopRoutes)
 app.use(aboutRoutes)
 app.use(errorController.get404)
 
 
-
+mongoConnect()  
+  
 server.listen(port, () => {
     console.log(`server is up on port ${port}!`)
 })
 
-mongoConnect()    
